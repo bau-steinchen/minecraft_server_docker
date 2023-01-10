@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    ports:
+      - 25565:25565
+      - 8123:8123
+    environment:
+      EULA: "TRUE"
+      TYPE: "FORGE"
+      GENERIC_PACK: /data/Server-Files-1.0.8.zip
+      VERSION: 1.19.2
+      FORGEVERSION: 43.2.3
+      MEMORY: "20G"
+      ONLINE_MODE: "true"
+      TZ: "Europe/Berlin"
+      USE_AIKAR_FLAGS: "true"
+      LOG_TIMESTAMP: "true"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      # attach a directory relative to the directory containing this compose file
+      - ~/compose/data/minecraft_atm8:/data
