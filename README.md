@@ -4,7 +4,7 @@ Just storing the startup files for the minecraft server running All The Mods 8 M
 ## DEPRECATION WARNING
 Some of the given information maybe outdated due to updates in the refence image:
 e.g. the image now provide the functionalities to directly start modpacks from curseforge by only providing the url or slug like discribes here:
-(Documentation about the docker image)[https://github.com/itzg/docker-minecraft-server#running-a-server-with-a-curseforge-modpack]
+[Documentation about the docker image](https://github.com/itzg/docker-minecraft-server#running-a-server-with-a-curseforge-modpack)
 
 ## Usage
 For running the server you need to download the server files from curseforge and adapt the versions inside the docker-compose file  
