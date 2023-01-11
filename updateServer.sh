@@ -126,6 +126,6 @@ echo -e "\
     Backup directory:       ${BACKUP_DIR}
 
 "
-now=$(date)
+now=$(date +'%d-%m-%Y')
 echo ${now}
-#mkdir -p ${BACKUP_DIR}
+zip -r ${BACKUO_DIR}/atm8_server_backup_${now}.zip ${SERVER_DIR}/
