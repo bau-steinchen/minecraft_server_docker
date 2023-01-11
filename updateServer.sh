@@ -5,6 +5,9 @@
 # param (1) - will be the path to the server-files.zip
 # param (2) - will be the path to the current server files
 
+WORLD_NAME="world"
+BACKUP_DIR=""
+
 ###############################################################################
 # display usage information
 ###############################################################################
@@ -18,8 +21,11 @@ Take the server-files.zip and try to update the version to the server-files.zip 
 
  Options:
   -f, --file FILE            FILE f the version the server should be running with
-  -n, --name STRING          STRING for custom world named (default is 'world')
   -s, --server DIR           DIR the directory of the server files of the running server
+
+ Optionals:
+  -n, --name STRING          STRING for custom world named (default is 'world')
+  -b, --backup DIR           DIR the directory where to store the backup file (default inside server files)
 
  Other options:
   -h, --help                 Displays this help"
@@ -52,11 +58,11 @@ do
     -n | --name)
         shift
 
-        if [ -z "$1" ]
+        if [ ! -z "$1" ]
         then
-            WORLD_NAME="world"
-        else
             WORLD_NAME="$1"
+        else
+            echo "INFO: using default world name"
         fi
         ;;
     -s | --server)
@@ -71,6 +77,20 @@ do
             else
                 echo "ERROR: Server directory '$1' does not exist" 1>&2
             fi
+        fi
+        ;;
+    -b | --backup)
+        shift
+        if [ ! -z "$1" ]
+        then
+            if [ -d "$1" ]; 
+            then
+                BACKUP_DIR="$1"
+            else
+                echo "ERROR: Server directory '$1' does not exist" 1>&2
+            fi
+        else
+            echo "INFO: No backup directory saving inside server files."
         fi
         ;;
     
@@ -103,4 +123,9 @@ echo -e "\
     MOD directory:          ${SERVER_DIR}/mods/
     World directoy          ${SERVER_DIR}/${WORLD_DIR}/
 
+    Backup directory:       ${BACKUP_DIR}
+
 "
+now=$(date)
+echo ${now}
+#mkdir -p ${BACKUP_DIR}
