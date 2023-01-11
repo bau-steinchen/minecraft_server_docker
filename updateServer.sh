@@ -5,8 +5,10 @@
 # param (1) - will be the path to the server-files.zip
 # param (2) - will be the path to the current server files
 
+SERVER_FILE="/home/ubuntu/compose/data/Server-Files-1.0.8.zip"
+SERVER_DIR="/home/ubuntu/compose/data/minecraft_atm8"
 WORLD_NAME="world"
-BACKUP_DIR=""
+BACKUP_DIR="/home/ubuntu/compose/data"
 
 ###############################################################################
 # display usage information
@@ -51,7 +53,7 @@ do
             then
                 SERVER_FILE="$1"
             else
-                echo "ERROR: Server file '$1' does not exist" 1>&2
+                echo "ERROR: Server file '$1' does not exist. It need to be local or the full path to the file" 1>&2
             fi
         fi
         ;;
@@ -115,7 +117,7 @@ done
 echo "Create Backup before update"
 
 ###############################################################################
-# display infos about the backup
+# display infos about the backup and perform backup 
 ###############################################################################
 
 echo -e "\
@@ -127,5 +129,18 @@ echo -e "\
 
 "
 now=$(date +'%d-%m-%Y')
-echo ${now}
-zip -r ${BACKUO_DIR}/atm8_server_backup_${now}.zip ${SERVER_DIR}/
+echo "usind date for backup: ${now}"
+zip -r ${BACKUO_DIR}/atm8_server_backup_${now}.zip ${SERVER_DIR}/${WORLD_DIR}
+
+###############################################################################
+# update server file 
+###############################################################################
+
+echo "INFO: remove old server file"
+rm ${SERVER_DIR}/Server*.zip
+
+
+echo "copy ${SERVER_FILE} to ${SERVER_DIR}"
+cp ${SERVER_FILE} ${SERVER_DIR}
+
+echo "copy completed you can now start the server"
