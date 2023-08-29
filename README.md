@@ -1,5 +1,13 @@
-# minecraft_atm8_server
-Just storing the startup files for the minecraft server running All The Mods 8 Modpack inside docker
+# minecraft_server_docker
+Just storing the startup files for minecraft servers i'm running.   
+Currently:   
+* All The Mods 8
+* All the Mods 9
+
+
+In Planning:   
+* All The Mods 7 To The Sky
+
 
 ## DEPRECATION WARNING
 Some of the given information maybe outdated due to updates in the refence image:

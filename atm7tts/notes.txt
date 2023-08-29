@@ -1,0 +1,6 @@
+
+// copy serverfiles to the server instanz
+scp -i ~/.ssh/<SSHKEY>.key ~/Downloads/server-1.2.3.zip <user>@<SERVER>:/tmp/
+
+// copy files to correct location (sudo needed)
+sudo cp /tmp/server-1.2.3.zip ~/storage/data/minecraft_atm7_tts/
