@@ -1,5 +1,6 @@
 version: "3"
 
+# old version without the CF loader that was added to the docker image 
 services:
   mc:
     image: itzg/minecraft-server
@@ -22,4 +23,4 @@ services:
     restart: unless-stopped
     volumes:
       # attach a directory relative to the directory containing this compose file
-      - ~/compose/data/minecraft_atm8:/data
+      - ~/storage/data/minecraft_atm8:/data
